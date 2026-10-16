@@ -1,0 +1,38 @@
+{
+  "name": "@bong2yo/han-myeongri",
+  "version": "0.1.0",
+  "description": "Auditable TypeScript primitives for Korean Four Pillars (사주명리) calculations",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check": "tsc --noEmit",
+    "test": "tsc -p tsconfig.build.json && node --test test/*.test.mjs"
+  },
+  "keywords": [
+    "사주",
+    "명리",
+    "만세력",
+    "four-pillars",
+    "typescript"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
