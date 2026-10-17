@@ -8,11 +8,16 @@ export {
   yearPillarFromAdjustedYear,
 } from "./pillars.js";
 export { analyzeStemTenGods, countPrincipalElements, polarityLabel, tenGod } from "./analysis.js";
+export { calculateBirthChart } from "./offline-calendar.js";
 export type {
+  BirthDateInput,
   Branch,
+  CalendarDate,
   CalendarFacts,
   Element,
   FourPillars,
+  LunarDate,
+  OfflineBirthChart,
   Pillar,
   Polarity,
   Stem,

@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@fullstackfamily/manseryeok':
+        specifier: ^1.0.8
+        version: 1.0.8
     devDependencies:
       typescript:
         specifier: ^5.9.3
@@ -14,11 +18,17 @@ importers:
 
 packages:
 
+  '@fullstackfamily/manseryeok@1.0.8':
+    resolution: {integrity: sha512-gzbnwpLwZpu2GNngykrjpXSCdDomjQCLomW3tF+PxIBSzd4fvQ2zv6En4WjmVED44hLnu0EIWRDd86Z/VuPN/A==}
+    engines: {node: '>=16.0.0'}
+
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
 snapshots:
+
+  '@fullstackfamily/manseryeok@1.0.8': {}
 
   typescript@5.9.3: {}

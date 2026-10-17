@@ -55,3 +55,44 @@ export interface CalendarFacts {
   /** 시계 기준 시각. 진태양시를 적용한다면 보정 후 값을 전달합니다. */
   hour: number;
 }
+
+export type BirthDateInput = Readonly<{
+  calendar: "solar" | "lunar";
+  year: number;
+  month: number;
+  day: number;
+  /** 음력 입력일 때만 사용합니다. */
+  isLeapMonth?: boolean;
+  hour: number;
+  minute?: number;
+  /** 출생지 경도. 생략하면 서울 기준 127도를 사용합니다. */
+  longitude?: number;
+  /** 경도 기반 시간 보정 적용 여부. 기본값은 true입니다. */
+  applyTimeCorrection?: boolean;
+}>;
+
+export type CalendarDate = Readonly<{
+  year: number;
+  month: number;
+  day: number;
+}>;
+
+export type LunarDate = CalendarDate & Readonly<{ isLeapMonth: boolean }>;
+
+export type OfflineBirthChart = Readonly<{
+  source: "embedded-korean-calendar";
+  solar: CalendarDate;
+  lunar: LunarDate;
+  pillars: FourPillars;
+  principalElements: Readonly<Record<Element, number>>;
+  stemTenGods: Readonly<{
+    year: TenGod;
+    month: TenGod;
+    hour: TenGod;
+  }>;
+  timeCorrection: Readonly<{
+    applied: boolean;
+    correctedHour?: number;
+    correctedMinute?: number;
+  }>;
+}>;

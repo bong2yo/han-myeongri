@@ -2,7 +2,7 @@
 
 한국 사주명리 계산을 **추측하지 않고 검증 가능한 규칙으로** 구현하는 TypeScript 라이브러리입니다.
 
-현재 `0.1.0`은 천간·지지·60갑자, 연주·월주·시주 조립, 오행 기초 분포와 천간 십신을 제공합니다. 음양력 변환과 절입 시각은 아직 내장하지 않았으며, 달력 엔진이 검증한 경계값을 명시적으로 받습니다. 미완성 계산을 정확한 만세력처럼 표시하지 않는 것이 이 프로젝트의 원칙입니다.
+현재 `0.1.0`은 천간·지지·60갑자, 오행 기초 분포, 천간 십신과 한국 음양력 기반 출생 사주 계산을 제공합니다. 달력 자료와 계산 코드는 패키지에 함께 설치되며 런타임 HTTP 요청, 외부 API 키 또는 원격 데이터베이스가 필요하지 않습니다.
 
 ## 설치
 
@@ -31,6 +31,30 @@ console.log(countPrincipalElements(chart));
 console.log(analyzeStemTenGods(chart));
 ```
 
+### 생년월일에서 오프라인 계산
+
+```ts
+import { calculateBirthChart } from "@bong2yo/han-myeongri";
+
+const result = calculateBirthChart({
+  calendar: "solar",
+  year: 1984,
+  month: 11,
+  day: 11,
+  hour: 10,
+  minute: 0,
+  longitude: 128.108, // 경남 진주
+});
+
+console.log(result.pillars.year.hangul);  // 갑자
+console.log(result.pillars.month.hangul); // 을해
+console.log(result.pillars.day.hangul);   // 기유
+console.log(result.pillars.hour.hangul);  // 기사
+console.log(result.lunar);                // 1984-10-19 평달
+```
+
+`calculateBirthChart()`는 동기 함수이며 네트워크를 사용하지 않습니다. 현재 내장 달력의 지원 범위는 1900~2050년입니다.
+
 ## 정확성 원칙
 
 - 계산 결과와 해석 문장을 분리합니다.
@@ -44,7 +68,7 @@ console.log(analyzeStemTenGods(chart));
 - [x] 천간·지지·60갑자 자료형
 - [x] 연주·월주·시주 계산 프리미티브
 - [x] 오행 기초 분포와 천간 십신
-- [ ] 한국 음양력·윤달 변환 어댑터
+- [x] 한국 음양력·윤달 변환 어댑터
 - [ ] 분 단위 24절기와 입춘 경계 엔진
 - [ ] 일주와 자시 경계 관법
 - [ ] 지장간 가중치·합충형파해
