@@ -1,6 +1,6 @@
 {
   "name": "@bong2yo/han-myeongri",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Auditable TypeScript primitives for Korean Four Pillars (사주명리) calculations",
   "type": "module",
   "main": "./dist/index.js",
